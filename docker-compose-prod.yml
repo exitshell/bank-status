@@ -1,0 +1,14 @@
+version: '2'
+services:
+
+  # Flask application.
+  app:
+    image: jsanweb/bank-status
+    container_name: app
+    restart: always
+    env_file: ./deploy/env/prod/app.env
+    command: gunicorn app.main:app -c /usr/src/app/settings.py
+    ports:
+      - "80:80"
+    volumes:
+      - ./logs:/usr/src/logs
