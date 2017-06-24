@@ -26,10 +26,7 @@ def index():
         'status': 'online',
         'request': {
             'ip_address': request.remote_addr,
-            'platform': user_agent.platform or '',
-            'browser': user_agent.browser or '',
-            'version': user_agent.version or '',
-            'string': user_agent.string or ''
+            'user_agent': user_agent.string or ''
         },
     }
     app.logger.info(json.dumps(response_data, indent=2))
@@ -45,7 +42,7 @@ def status():
         if field not in request.values:
             return tw_response('Invalid Data')
 
-    # Get values.
+    # Get POSTed values.
     account_id = request.values.get('AccountSid')
     from_number = request.values.get('From')
     body = request.values.get('Body').lower()
@@ -58,12 +55,14 @@ def status():
     if from_number not in settings.AUTHORIZED_NUMBERS:
         return tw_response('Phone not authorized')
 
-    # Perform account status update.
+    # Perform checking account status.
     if 'checking' in body:
         # message = bank.status_checking()
         message = '[debug] status checking...'
         log_bank_status_response(request, 'Checking', message)
         return tw_response(message)
+
+    # Perform saving account status.
     elif 'savings' in body:
         # message = bank.status_savings()
         message = '[debug] status savings...'
