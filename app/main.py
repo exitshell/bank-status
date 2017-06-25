@@ -35,7 +35,7 @@ def index():
 
 @app.route('/status', methods=['POST'])
 def status():
-    required_fields = ['AccountSid', 'To', 'Body']
+    required_fields = ['AccountSid', 'From', 'Body']
 
     # Check that the appropriate fields are given.
     for field in required_fields:
