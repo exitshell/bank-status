@@ -79,12 +79,10 @@ celerybeat-schedule
 *.sage.py
 
 # Environments
-.env
-.env.production
-.venv
-env/
 venv/
-ENV/
+env/prod/
+hosts/prod/
+keys/prod/
 
 # Spyder project settings
 .spyderproject
