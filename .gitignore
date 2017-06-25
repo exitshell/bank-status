@@ -102,5 +102,4 @@ ENV/
 # Misc
 misc/
 logs/
-deploy/
 .DS_Store
