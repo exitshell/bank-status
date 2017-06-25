@@ -1,3 +1,6 @@
 Flask==0.12.2
 gunicorn==19.7.1
+humanize==0.5.1
+plaid-python==2.0.2
+requests==2.18.1
 twilio==6.4.1

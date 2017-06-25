@@ -4,6 +4,7 @@ from flask import (
     Flask, jsonify, request, make_response
 )
 
+from . import bank
 from . import settings
 from .logging import configure_logging, log_bank_status_response
 from .response import random_response, tw_response
@@ -57,15 +58,13 @@ def status():
 
     # Perform checking account status.
     if 'checking' in body:
-        # message = bank.status_checking()
-        message = '[debug] status checking...'
+        message = bank.get_checking_balance()
         log_bank_status_response(request, 'Checking', message)
         return tw_response(message)
 
     # Perform saving account status.
-    elif 'savings' in body:
-        # message = bank.status_savings()
-        message = '[debug] status savings...'
+    elif 'saving' in body:
+        message = bank.get_savings_balance()
         log_bank_status_response(request, 'Savings', message)
         return tw_response(message)
 
