@@ -1,0 +1,9 @@
+# Configs
+env/staging
+env/prod
+
+keys/staging
+keys/prod
+
+hosts/staging
+hosts/prod

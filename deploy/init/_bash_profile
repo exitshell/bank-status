@@ -1,0 +1,2 @@
+alias dc='docker-compose -f docker-compose-prod.yml'
+alias dcrm="dc stop -t 1 && dc rm -fv"
