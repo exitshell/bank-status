@@ -12,8 +12,6 @@ client = plaid.Client(client_id=settings.PLAID_CLIENT_ID,
                       environment=settings.PLAID_ENV
                       )
 
-url = 'https://sandbox.plaid.com/auth/get'
-
 plaid_data = {
     'client_id': settings.PLAID_CLIENT_ID,
     'secret': settings.PLAID_SECRET,
@@ -27,7 +25,7 @@ def _get_balance(account_type, account_mask):
     '''
 
     error_msg = 'Error fetching account balance.'
-    response = requests.post(url, json=plaid_data)
+    response = requests.post(settings.PLAID_URL, json=plaid_data)
 
     # Check that status code is valid.
     if response.status_code not in [200, 201]:
