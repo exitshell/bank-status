@@ -45,6 +45,7 @@ def _get_balance(account_type, account_mask):
 
         # Get balance amount.
         balance = account['balances']['available']
+        balance = '{:.2f}'.format(balance)
 
         return 'Balance in {} account is ${}.'.format(
             account_type, humanize.intcomma(balance)
