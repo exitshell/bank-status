@@ -7,7 +7,7 @@ from twilio.twiml.messaging_response import (
 default_responses = [
     'Hello from Bank Status',
     'Hi',
-    'Hi there.',
+    'Hi there!',
     'Hello',
     'Bank Status says Hello',
     'What would you like to check today?',
