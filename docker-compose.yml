@@ -6,7 +6,7 @@ services:
     image: jsanweb/bank-status
     build: .
     container_name: app
-    restart: always
+    # restart: always
     env_file: ./deploy/env/dev/app.env
     command: python run.py
     ports:
