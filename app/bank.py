@@ -45,9 +45,10 @@ def _get_balance(account_type, account_mask):
         balance = account['balances']['available']
         balance = '{:.2f}'.format(balance)
 
-        return 'Balance in {} account is ${}.'.format(
+        message = 'Balance in {} account is ${}.'.format(
             account_type, humanize.intcomma(balance)
         )
+        return message, message
     except (IndexError, KeyError) as e:
         return error_msg, '{} - ({}) {}'.format(error_msg, type(e), e)
 
