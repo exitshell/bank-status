@@ -58,15 +58,15 @@ def status():
 
     # Perform checking account status.
     if 'checking' in body:
-        message = bank.get_checking_balance()
-        log_bank_status_response(request, 'Checking', message)
-        return tw_response(message)
+        phone_message, log_message = bank.get_checking_balance()
+        log_bank_status_response(request, 'Checking', log_message)
+        return tw_response(phone_message)
 
     # Perform saving account status.
     elif 'saving' in body:
-        message = bank.get_savings_balance()
-        log_bank_status_response(request, 'Savings', message)
-        return tw_response(message)
+        phone_message, log_message = bank.get_savings_balance()
+        log_bank_status_response(request, 'Savings', log_message)
+        return tw_response(phone_message)
 
     # Return default response.
     message, response = random_response()

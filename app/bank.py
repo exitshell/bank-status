@@ -29,7 +29,7 @@ def _get_balance(account_type, account_mask):
 
     # Check that status code is valid.
     if response.status_code not in [200, 201]:
-        return error_msg
+        return error_msg, '{} - {}'.format(error_msg, response.status_code)
 
     # Get accounts.
     account_list = response.json()['accounts']
@@ -48,8 +48,8 @@ def _get_balance(account_type, account_mask):
         return 'Balance in {} account is ${}.'.format(
             account_type, humanize.intcomma(balance)
         )
-    except (IndexError, KeyError):
-        return error_msg
+    except (IndexError, KeyError) as e:
+        return error_msg, '{} - ({}) {}'.format(error_msg, type(e), e)
 
 
 def get_savings_balance():
